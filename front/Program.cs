@@ -101,11 +101,11 @@ public class OthelloView : View
             {
                 var content = text.Split(' ');
                 this.game = OthelloGame.New(
-                    byte.Parse(content[0]),
-                    ulong.Parse(content[1]),
-                    ulong.Parse(content[3]),
-                    byte.Parse(content[2]),
-                    byte.Parse(content[4])
+                    byte.Parse(content[0]),   // whiteInfo = white,
+                    ulong.Parse(content[1]),  // blackInfo = black,
+                    ulong.Parse(content[3]),  // blackCount = bCount,
+                    byte.Parse(content[2]),   // whiteCount = wCount,
+                    byte.Parse(content[4])    // whitePlays = whitePlays
                 );
                 passCount = 0;
             }
