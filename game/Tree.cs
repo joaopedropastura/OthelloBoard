@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // public class Node
 // {
 //     public Notakto State { get; set; }
@@ -5,6 +6,16 @@
 //     public List<Node> Children { get; set; } = new();
 //     public bool Expanded { get; set; } = false;
 //     public bool YouPlays { get; set; } = true;
+=======
+public class Node
+{
+    public Othello State { get; set; }
+    public float Avaliation { get; set; } = 0;
+    public List<Node> Children { get; set; } = new();
+    public bool Expanded { get; set; } = false;
+    public bool YouPlays { get; set; } = true;
+    public float AlphaBeta() => AlphaBeta(float.NegativeInfinity, float.PositiveInfinity);
+>>>>>>> 977dcadcbe6dd329d1d0e8bf684865b23c0fa0b9
 
 //     public Node Play(int board, int position)
 //     {
@@ -45,6 +56,7 @@
 //         );
 //     }
 
+<<<<<<< HEAD
 //     public float MiniMax()
 //     {
 //         if (this.Children.Count == 0)
@@ -78,6 +90,48 @@
 //             return this.Avaliation;
 //         }
 //     }
+=======
+    public float AlphaBeta(float alpha, float beta)
+    {
+        if (this.Children.Count == 0)
+        {
+            this.Avaliation = aval();
+            return this.Avaliation;
+        }
+
+        if (YouPlays)
+        {
+            var value = float.NegativeInfinity;
+            foreach (var child in Children)
+            {
+                var avaliation = child.AlphaBeta();
+                if (beta < value)
+                {
+                    beta = value;
+                    break
+                }
+            }
+            this.Avaliation = value;
+            return this.Avaliation;
+        }
+        else
+        {
+            var value = float.PositiveInfinity;
+            foreach (var child in Children)
+            {
+                var avaliation = child.AlphaBeta();
+                if (avaliation < value)
+                {
+                    value = avaliation;
+                    this.Avaliation = value;
+                    return this.Avaliation;
+                }
+            }
+            this.Avaliation = value;
+            return this.Avaliation;
+        }
+    }
+>>>>>>> 977dcadcbe6dd329d1d0e8bf684865b23c0fa0b9
 
 //     private float aval()
 //     {
