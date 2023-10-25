@@ -1,10 +1,11 @@
 public class Node
 {
-    public Notakto State { get; set; }
+    public Othello State { get; set; }
     public float Avaliation { get; set; } = 0;
     public List<Node> Children { get; set; } = new();
     public bool Expanded { get; set; } = false;
     public bool YouPlays { get; set; } = true;
+    public float AlphaBeta() => AlphaBeta(float.NegativeInfinity, float.PositiveInfinity);
 
     public Node Play(int board, int position)
     {
@@ -45,7 +46,7 @@ public class Node
         );
     }
 
-    public float MiniMax()
+    public float AlphaBeta(float alpha, float beta)
     {
         if (this.Children.Count == 0)
         {
@@ -58,9 +59,12 @@ public class Node
             var value = float.NegativeInfinity;
             foreach (var child in Children)
             {
-                var avaliation = child.MiniMax();
-                if (avaliation > value)
-                    value = avaliation;
+                var avaliation = child.AlphaBeta();
+                if (beta < value)
+                {
+                    beta = value;
+                    break
+                }
             }
             this.Avaliation = value;
             return this.Avaliation;
@@ -70,9 +74,13 @@ public class Node
             var value = float.PositiveInfinity;
             foreach (var child in Children)
             {
-                var avaliation = child.MiniMax();
+                var avaliation = child.AlphaBeta();
                 if (avaliation < value)
+                {
                     value = avaliation;
+                    this.Avaliation = value;
+                    return this.Avaliation;
+                }
             }
             this.Avaliation = value;
             return this.Avaliation;
