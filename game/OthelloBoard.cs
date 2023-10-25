@@ -1,18 +1,20 @@
 public record struct OthelloBoard(ulong Winfo, ulong Binfo, byte Wcount, byte Bcount, byte Wplays)
 {
     ulong table = Winfo | Binfo, border;
-
+    int positions = [1, 9, -9, -1, -8, 8, 7, -7];
     const ulong tableBorder = 18411139144890810879;
-    public ulong PlaysAvailable()
+    public void GetBorderGame()
     {
-
-        if(!table & tableBorder)
+        if(!(table & tableBorder))
         {
             for(int i = 0; i < 8; i++)
-            {
-                       
-            }
+                border |= table >>> table + positions[i];
+            border ^= table;
         }
+    }
+
+    public ulong PlaysAvailable()
+    {
 
     }
 
