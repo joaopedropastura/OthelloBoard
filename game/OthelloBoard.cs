@@ -17,7 +17,7 @@ public record struct OthelloBoard(ulong Winfo, ulong Binfo, byte Wcount, byte Bc
 
     public ulong PlaysAvailable()
     {
-        ulong tempBorder, findEnemy, findAlly, playAvailable = 0;
+        ulong tempBorder, findEnemy, findAlly, playAvailable = false, newTable = 0;
         if(Wplays == 1)
         {
 
@@ -35,12 +35,26 @@ public record struct OthelloBoard(ulong Winfo, ulong Binfo, byte Wcount, byte Bc
                         continue;
                     if(!((findEnemy & Binfo )> 0))
                         continue;
+
                     while((findEnemy & tableBorder) != 1)
                     {
                         findAlly = findEnemy >>> positions[i];
                         if((findAlly & Winfo) > 0)
-                            playAvailable |= tempBorder;
+                            playAvailable = true;
                     } 
+                    while((findEnemy & tableBorder) != 1)
+                    {
+                        if(!playAvailable)
+                            break;
+                        
+                        findAlly |= findEnemy >>> positions[i];
+                        if((findAlly & Binfo) > 0)
+                            newTable |= findEnemy >>> positions[i];
+                    }
+                    playAvailable = false;
+                    newTable |= tempBorder | Winfo;
+
+
                 }
             }
         }
@@ -59,12 +73,24 @@ public record struct OthelloBoard(ulong Winfo, ulong Binfo, byte Wcount, byte Bc
                         continue;
                     if(!((findEnemy & Winfo )> 0))
                         continue;
+
                     while((findEnemy & tableBorder) != 1)
                     {
                         findAlly = findEnemy >>> positions[i];
                         if((findAlly & Binfo) > 0)
-                            playAvailable |= tempBorder;
+                            playAvailable = true;
                     } 
+                    while((findEnemy & tableBorder) != 1)
+                    {
+                        if(!playAvailable)
+                            break;
+                        
+                        findAlly |= findEnemy >>> positions[i];
+                        if((findAlly & Winfo) > 0)
+                            newTable |= findEnemy >>> positions[i];
+                    }
+                    playAvailable = false;
+                    newTable |= tempBorder | Winfo;
                 }
             }
         }
