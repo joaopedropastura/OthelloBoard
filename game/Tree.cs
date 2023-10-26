@@ -54,37 +54,64 @@
     //         return this.Avaliation;
     //     }
 
+//         if (YouPlays)
+//         {
+//             var value = float.NegativeInfinity;
+//             foreach (var child in Children)
+//             {
+//                 var avaliation = child.MiniMax();
+//                 if (avaliation > value)
+//                     value = avaliation;
+//             }
+//             this.Avaliation = value;
+//             return this.Avaliation;
+//         }
+//         else
+//         {
+//             var value = float.PositiveInfinity;
+//             foreach (var child in Children)
+//             {
+//                 var avaliation = child.MiniMax();
+//                 if (avaliation < value)
+//                     value = avaliation;
+//             }
+//             this.Avaliation = value;
+//             return this.Avaliation;
+//         }
+//     }
+    // public float AlphaBeta(float alpha, float beta)
+    // {
+    //     if (this.Children.Count == 0)
+    //     {
+    //         this.Avaliation = aval();
+    //         return this.Avaliation;
+    //     }
+
     //     if (YouPlays)
     //     {
     //         var value = float.NegativeInfinity;
     //         foreach (var child in Children)
     //         {
-    //             var avaliation = child.AlphaBeta();
+    //             value = Math.Max(value, child.AlphaBeta(alpha, beta));
     //             if (beta < value)
-    //             {
-    //                 beta = value;
-    //                 break
-    //             }
+    //                 break;
     //         }
-    //         this.Avaliation = value;
-    //         return this.Avaliation;
+    //         alpha = Math.Max(value, alpha);
+    //         return value;
     //     }
     //     else
     //     {
     //         var value = float.PositiveInfinity;
     //         foreach (var child in Children)
     //         {
-    //             var avaliation = child.AlphaBeta();
-    //             if (avaliation < value)
-    //             {
-    //                 value = avaliation;
-    //                 this.Avaliation = value;
-    //                 return this.Avaliation;
-    //             }
+    //             value = Math.Min(child.AlphaBeta(alpha, beta));
+    //             if (alpha > value)
+    //                 break;
     //         }
-    //         this.Avaliation = value;
-    //         return this.Avaliation;
+    //         beta = Math.Min(value, beta);
+    //         return value;
     //     }
+    //     return value;
     // }
 
 //     private float aval()
