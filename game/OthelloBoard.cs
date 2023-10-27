@@ -34,7 +34,7 @@ public record struct OthelloBoard(byte Wplays, ulong Winfo, byte Wcount, ulong B
             {
                 findEnemy = tempBorder >>> positions[i];
                 if ((findEnemy & 1) == 1)
-                {''
+                {
                     continue;
                 }
                 if (!((findEnemy & pieces1) == 1))

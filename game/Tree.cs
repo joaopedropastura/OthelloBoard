@@ -1,6 +1,10 @@
 // public class Node
 // {
+<<<<<<< HEAD
 //     public OthelloBoard State { get; set; }
+=======
+//     public Othello State { get; set; }
+>>>>>>> 0382aec0ff575987e209c06ef19a97006c4eb0e9
 //     public float Avaliation { get; set; } = 0;
 //     public List<Node> Children { get; set; } = new();
 //     public bool Expanded { get; set; } = false;
