@@ -1,21 +1,11 @@
-<<<<<<< HEAD
 // public class Node
 // {
-//     public Notakto State { get; set; }
+//     public OthelloBoard State { get; set; }
 //     public float Avaliation { get; set; } = 0;
 //     public List<Node> Children { get; set; } = new();
 //     public bool Expanded { get; set; } = false;
 //     public bool YouPlays { get; set; } = true;
-=======
-public class Node
-{
-    public Othello State { get; set; }
-    public float Avaliation { get; set; } = 0;
-    public List<Node> Children { get; set; } = new();
-    public bool Expanded { get; set; } = false;
-    public bool YouPlays { get; set; } = true;
-    public float AlphaBeta() => AlphaBeta(float.NegativeInfinity, float.PositiveInfinity);
->>>>>>> 977dcadcbe6dd329d1d0e8bf684865b23c0fa0b9
+//     public float AlphaBeta() => AlphaBeta(float.NegativeInfinity, float.PositiveInfinity);
 
 //     public Node Play(int board, int position)
 //     {
@@ -56,8 +46,7 @@ public class Node
 //         );
 //     }
 
-<<<<<<< HEAD
-//     public float MiniMax()
+//     public float AlphaBeta(float alpha, float beta)
 //     {
 //         if (this.Children.Count == 0)
 //         {
@@ -70,62 +59,26 @@ public class Node
 //             var value = float.NegativeInfinity;
 //             foreach (var child in Children)
 //             {
-//                 var avaliation = child.MiniMax();
-//                 if (avaliation > value)
-//                     value = avaliation;
+//                 value = Math.Max(value, child.AlphaBeta(alpha, beta));
+//                 if (beta < value)
+//                     break;
 //             }
-//             this.Avaliation = value;
-//             return this.Avaliation;
+//             alpha = Math.Max(value, alpha);
+//             return value;
 //         }
 //         else
 //         {
 //             var value = float.PositiveInfinity;
 //             foreach (var child in Children)
 //             {
-//                 var avaliation = child.MiniMax();
-//                 if (avaliation < value)
-//                     value = avaliation;
+//                 value = Math.Min(value, child.AlphaBeta(alpha, beta));
+//                 if (alpha > value)
+//                     break;
 //             }
-//             this.Avaliation = value;
-//             return this.Avaliation;
+//             beta = Math.Min(value, beta);
+//             return value;
 //         }
 //     }
-=======
-    public float AlphaBeta(float alpha, float beta)
-    {
-        if (this.Children.Count == 0)
-        {
-            this.Avaliation = aval();
-            return this.Avaliation;
-        }
-
-        if (YouPlays)
-        {
-            var value = float.NegativeInfinity;
-            foreach (var child in Children)
-            {
-                value = Math.Max(value, child.AlphaBeta(alpha, beta));
-                if (beta < value)
-                    break;
-            }
-            alpha = Math.Max(value, alpha);
-            return value;
-        }
-        else
-        {
-            var value = float.PositiveInfinity;
-            foreach (var child in Children)
-            {
-                value = Math.Min(child.AlphaBeta(alpha, beta));
-                if (alpha > value)
-                    break;
-            }
-            beta = Math.Min(value, beta);
-            return value;
-        }
-        return value;
-    }
->>>>>>> 977dcadcbe6dd329d1d0e8bf684865b23c0fa0b9
 
 //     private float aval()
 //     {
